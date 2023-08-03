@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-bind: class-->
+    <div
+      x-data="{
+      clicked: false
+    }"
+    >
+      <button
+        class="border"
+        x-bind:class="clicked ? 'yellow':''"
+        @click="clicked = true"
+      >
+        Click
+      </button>
+    </div>
+    <div
+      x-data="{
+      clicked: false
+    }"
+    >
+      <!-- Short hand approach -->
+      <button
+        class="border"
+        :class="{
+          yellow: clicked
+        }"
+        @click="clicked = true"
+      >
+        Click
+      </button>
+    </div>
+    <style>
+      .border {
+        border: 2px solid brown;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-if -->
+    <div
+      x-data="{
+      open: false,
+      toggle(){
+        this.open = !this.open
+      }
+    }"
+    >
+      <button @click="toggle">Open/Close</button>
+      <!-- 
+        1. Work only in template
+        2. Don't have transitions, because the element is detached from the DOM
+      -->
+      <template x-if="open">
+        <div>Content...</div>
+      </template>
+    </div>
+  </body>
+</html>

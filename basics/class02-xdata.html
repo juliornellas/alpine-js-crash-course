@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-data with methods -->
+    <div
+      x-data="{
+            message: 'Click to change', 
+            message2: 'Another message',
+            change(){
+                this.message = 'Changed message!'
+            },
+            change2(){
+                this.message2 = 'Changed another message!'
+            }
+        }"
+    >
+      <span x-text="message" @click="change()"></span>
+      <p x-text="message2" @click="change2()"></p>
+    </div>
+  </body>
+</html>

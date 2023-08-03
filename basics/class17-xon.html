@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-on-->
+    <div
+      x-data
+      @scroll.window="console.log('scroll')"
+      @blabla="console.log('Edit was triggered')"
+    >
+      <button @click="console.log('Clicked 1', $event)">Clicked 1</button>
+      <input type="text" @keyup="console.log('Keyup')" />
+
+      <!--Modifiers-->
+      <input type="text" @keyup.enter="console.log('Keyup Enter')" />
+      <input type="text" @keyup.once="console.log('Keyup Once')" />
+      <input type="text" @keyup.debounce="console.log('Keyup Debounce')" />
+
+      <!-- Outside -->
+      <div
+        x-data="{
+        modal: false
+      }"
+      >
+        <button @click="modal = true">Show modal</button>
+        <div
+          style="width: 100px; height: 100px; border: 3px solid blueviolet"
+          x-show="modal"
+          @click.outside="modal = false"
+        >
+          Modal content...
+        </div>
+      </div>
+
+      <!-- Dispatch -->
+      <button @click="$dispatch('blabla')">Edit</button>
+    </div>
+  </body>
+</html>

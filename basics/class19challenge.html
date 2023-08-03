@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- Challenge-->
+    <!-- 
+      Create a button and change these properties:
+      1. Text, should become the text of the button
+      2. Background color of the button
+      3. For button id, to become id's button
+     -->
+    <div
+      x-data="{
+      text: null,
+      bg:null,
+      id:null
+    }"
+    >
+      <input type="text" x-model="text" placeholder="Text" />
+      <input type="text" x-model="bg" placeholder="Background color" />
+      <input type="text" x-model="id" placeholder="ID" />
+
+      <button :id="id" :style="{backgroundColor: bg}" x-text="text"></button>
+    </div>
+  </body>
+</html>

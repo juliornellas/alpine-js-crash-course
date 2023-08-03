@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-ref -->
+    <!-- x-ref in combination with $refs is a useful utility for easily accessing DOM elements directly. It's most useful as a replacement for APIs like getElementById and querySelector. -->
+    <div x-data>
+      <input x-ref="inputEmail" type="text" placeholder="Email" />
+      <button @click="$refs.inputEmail.style.borderColor = 'blue'">
+        Button
+      </button>
+    </div>
+  </body>
+</html>

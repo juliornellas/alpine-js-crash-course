@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-for -->
+    <div
+      x-data="{
+      posts: [
+      {
+        id: 1,
+        title: 'Post One'
+      },
+      {
+        id:2,
+        title: 'Post Two'
+      }
+      ]
+    }"
+    >
+      <!-- Work only in template elements -->
+      <template x-for="post in posts" :key="post.id">
+        <p x-text="post.id + ' ' + post.title"></p>
+      </template>
+    </div>
+  </body>
+</html>

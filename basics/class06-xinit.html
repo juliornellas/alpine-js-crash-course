@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- x-init -->
+    <div x-init="console.log('Init')"></div>
+    <div
+      x-data="{
+        init(){
+            console.log('Inicialized')
+        }
+    }"
+    ></div>
+    <div
+      x-data="{ 
+        todo: {}
+    }"
+      x-init="todo = await (await fetch('https://jsonplaceholder.typicode.com/todos/1')).json()"
+    >
+      <p x-text="todo.title"></p>
+    </div>
+  </body>
+</html>

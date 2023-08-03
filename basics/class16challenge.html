@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- Challenge-->
+    <div
+      x-data="{
+      colors: ['red','green','blue']
+    }"
+    >
+      <!-- Iterate over the colors and print them into boxes with the given colors -->
+      <template x-for="color in colors" :id="color">
+        <div
+          style="width: 40px; height: 40px; display: inline-block"
+          :style="{backgroundColor: color}"
+        ></div>
+      </template>
+    </div>
+  </body>
+</html>

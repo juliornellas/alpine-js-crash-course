@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <!-- Scoping -->
+    <div
+      x-data="{
+        name:'Julio',
+        age: 18,
+        gender: 'male'
+    }"
+    >
+      <!-- Third level to found -->
+      <div
+        x-data="{
+            name: 'Tiradentes',
+            age: 19
+        }"
+      >
+        <!-- Second level to found -->
+        <div x-data="{name: 'Pele'}">
+          <!-- First level to found -->
+          <p x-text="name"></p>
+          <p x-text="age"></p>
+          <p x-text="gender"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
