@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="/basics/app.js"></script>
+  </head>
+  <body>
+    <!-- $root -->
+    <div x-data id="first">
+      <div id="second">
+        <div x-data id="third">
+          <div id="fourth">
+            <button @click="console.log($root)">Button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

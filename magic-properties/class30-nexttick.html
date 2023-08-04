@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Crash Course</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="/basics/app.js"></script>
+  </head>
+  <body>
+    <!-- $nextTick -->
+    <div
+      x-data="{
+      name: 'Julio'
+    }"
+    >
+      <!-- This console.log prints the oldname, because they don't wait the Alpine JS load to finish -->
+      <!-- <button @click="name = 'Pele'; console.log($refs.p.innerText)"> -->
+
+      <!-- nextTick waits Alpine load to print the new change -->
+      <button
+        @click="name = 'Pele'; $nextTick(()=> console.log($refs.p.innerText))"
+      >
+        Change name
+      </button>
+      <p x-ref="p" x-text="name"></p>
+    </div>
+  </body>
+</html>
