@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS Components Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <!-- Modal -->
+    <div
+      x-data="{
+      open: false,
+      accept(){
+        console.log('Accepted!')
+      }
+    }"
+    >
+      <button
+        @click="open = true"
+        class="inline-flex items-center py-2 px-6 bg-purple-600 hover:bg-opacity-95 text-white rounded-md shadow"
+      >
+        Toggle
+      </button>
+      <template x-teleport="body">
+        <!-- Backdrop -->
+        <div
+          x-show="open"
+          class="fixed flex justify-center items-center left-0 top-0 bottom-0 right-0 z-10 bg-black/50"
+        >
+          <!-- Dialog -->
+          <!-- x-transition works with x-show. That's the case we also add x-show to Dialog -->
+          <div
+            x-transition
+            x-show="open"
+            @click.outside="open = false"
+            class="w-[90%] md:w-1/2 bg-white rounded-lg"
+          >
+            <div
+              class="py-2 px-4 text-lg font-semibold bg-gray-100 rounded-t-lg flex items-center justify-between"
+            >
+              <h2>Modal Title</h2>
+              <button @click="open = false">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="p-4">Modal Body</div>
+            <div class="py-2 px-4 bg-gray-100 rounded-b-lg">
+              <button
+                @click="accept"
+                class="inline-flex items-center py-1 px-3 bg-emerald-500 hover:bg-opacity-95 text-white rounded-md shadow"
+              >
+                Accept
+              </button>
+
+              <button
+                @click="open = false"
+                class="inline-flex items-center py-1 px-3 bg-gray-300 hover:bg-opacity-95 text-gra-800 rounded-md shadow"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <!-- Tabs -->
+    <!-- Carousel -->
+    <!-- Accordion -->
+    <!-- Notification -->
+    <!-- Popover -->
+  </body>
+</html>

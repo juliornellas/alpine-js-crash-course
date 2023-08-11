@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS Components Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <!-- Notification -->
+    <div
+      x-data="{
+        visible: true,
+        timeout: 5000,
+        interval:null,
+        percent: 0,
+        close(){
+          this.visible = false
+          clearInterval(this.interval)
+        },
+        init(){
+          setTimeout(()=>{
+            this.visible = false
+          }, this.timeout)
+          const startDate = Date.now();
+          const futureDate = Date.now() + this.timeout;
+          this.interval = setInterval(()=>{
+            const now = Date.now();
+            this.percent = (now - startDate) * 100 / (futureDate - startDate)
+            if(this.percent >=100) clearInterval(this.interval)
+          },30)
+        },
+        
+    }"
+      x-transition
+      x-show="visible"
+      class="relative py-2 px-4 bg-emerald-600 text-white"
+    >
+      <div class="font-semibold mb-2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </div>
+      <div class="text-sm">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam adipisci
+        fuga excepturi esse ipsa cum quod, et repellat sequi at dolorum eos
+        sapiente autem quis ratione numquam hic deserunt dolore.
+      </div>
+      <button
+        @click="close"
+        class="absolute flex items-center justify-center right-1 top-1 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <!-- Progress bar -->
+      <div>
+        <div
+          :style="{'width': `${percent}%`}"
+          class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/20"
+        ></div>
+      </div>
+    </div>
+    <!-- Popover -->
+  </body>
+</html>

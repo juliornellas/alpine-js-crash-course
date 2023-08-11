@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS Components Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <!-- Carousel -->
+    <div
+      x-data="{
+      images: ['images/pele1.jpeg', 'images/pele2.jpeg', 'images/pele3.jpeg'],
+      activeImage: null,
+      prev(){
+        const index = this.images.indexOf(this.activeImage);
+        if(index == 0) return;
+        this.activeImage = this.images[index - 1];
+      },
+      next(){
+        const index = this.images.indexOf(this.activeImage);
+        console.log('Index next', index)
+        if(index === this.images.length - 1) return;
+        this.activeImage = this.images[index + 1];
+      },
+      init(){
+        this.activeImage = this.images.length > 0 ? this.images[0] : null
+      }
+    }"
+    >
+      <div class="relative">
+        <template x-for="image in images">
+          <img
+            x-show="activeImage === image"
+            x-transition
+            :src="image"
+            alt=""
+          />
+        </template>
+        <!-- Left -->
+        <a
+          @click.prevent="prev"
+          class="cursor-pointer bg-slate-200 text-black absolute left-0 top-1/2 -translate-1/2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </a>
+        <!-- Right -->
+        <a
+          @click.prevent="next"
+          class="cursor-pointer bg-slate-200 text-black absolute right-0 top-1/2 -translate-1/2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="flex">
+        <template x-for="image in images">
+          <a
+            @click="activeImage = image"
+            class="cursor-pointer w-[80px] border border-gray-300 hover:border-purple-500 flex items-center justify-center"
+            :class="{'border-purple-500': activeImage == image}"
+          >
+            <img :src="image" class="object-cover" alt="" />
+          </a>
+        </template>
+      </div>
+    </div>
+    <!-- Accordion -->
+    <!-- Notification -->
+    <!-- Popover -->
+  </body>
+</html>

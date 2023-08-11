@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS Components Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="app.js"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <!-- Popover -->
+    <div
+      x-data="{
+      show: false,
+      title: 'Popover',
+      message: 'Popover <b>message</b>'
+    }"
+      class="relative mt-32"
+    >
+      <button
+        @click="show = true"
+        class="inline-flex items-center py-2 px-6 bg-purple-600 hover:bg-opacity-95 text-white rounded-md shadow"
+      >
+        Popover
+      </button>
+      <div
+        x-show="show"
+        x-transition
+        class="absolute bottom-[100%] shadow-lg bg-white w-[200px] rounded"
+      >
+        <!-- Header -->
+        <div class="flex justify-between items-center font-semibold py-1 px-2">
+          <span x-text="title"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-4 h-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </div>
+        <!-- Body -->
+        <div x-html="message" class="p-3 text-sm"></div>
+      </div>
+    </div>
+  </body>
+</html>
